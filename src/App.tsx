@@ -1,4 +1,4 @@
-const IOS_STORE_URL = '#'
+const IOS_STORE_URL = 'https://apps.apple.com/us/app/bourbon-dojo/id6762319810'
 const ANDROID_STORE_URL = '#'
 const PRIVACY_POLICY_URL = 'https://ryankolsen.github.io/bourbonvault-privacy/'
 
@@ -45,6 +45,17 @@ const features = [
     title: 'Groups & Sale Alerts',
     body: 'Create a crew, post sale finds, and never let your circle miss a great bottle.',
   },
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5" />
+        <path d="M2 12l10 5 10-5" />
+      </svg>
+    ),
+    title: 'The Dojo',
+    body: 'Earn XP, climb belt ranks, and sharpen your knowledge daily. Play Dojo Duel or Pour or Faker — the Dojo rewards showing up.',
+  },
 ]
 
 function AppleButton() {
@@ -69,14 +80,14 @@ function GooglePlayButton() {
   return (
     <a
       href={ANDROID_STORE_URL}
-      className="store-btn"
-      aria-label="Get it on Google Play"
+      className="store-btn store-btn--soon"
+      aria-label="Coming soon on Google Play"
     >
       <svg className="store-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M3.18 23.76c.37.21.8.22 1.2.04L16.54 12 12.36 7.82 3.18 23.76zM20.9 10.53L17.95 8.8l-3.79 3.2 3.79 3.2 2.97-1.74c.85-.5.85-1.44-.02-1.93zM2.01 1.46C1.99 1.63 2 1.8 2 1.98v20.04c0 .18.01.35.03.52l10.33-10.54L2.01 1.46zM13.18 12.7l3.18-3.18-10.34-5.97c-.4-.23-.82-.25-1.2-.08L13.18 12.7z" />
       </svg>
       <span className="store-btn-text">
-        <span className="store-btn-sub">Get it on</span>
+        <span className="store-btn-sub">Coming soon on</span>
         <span className="store-btn-main">Google Play</span>
       </span>
     </a>
@@ -254,6 +265,12 @@ export default function App() {
           transform: translateY(0);
         }
 
+        .store-btn--soon {
+          opacity: 0.55;
+          pointer-events: none;
+          cursor: default;
+        }
+
         .store-icon {
           width: 28px;
           height: 28px;
@@ -320,17 +337,21 @@ export default function App() {
 
         .feature-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          grid-template-columns: repeat(6, 1fr);
           gap: 20px;
         }
 
         .feature-card {
+          grid-column: span 2;
           background: var(--bourbon-card);
           border: 1px solid var(--divider);
           border-radius: 16px;
           padding: 28px 24px;
           transition: border-color 0.18s, transform 0.15s;
         }
+
+        .feature-card:nth-child(4) { grid-column: 2 / 4; }
+        .feature-card:nth-child(5) { grid-column: 4 / 6; }
 
         .feature-card:hover {
           border-color: rgba(212, 135, 10, 0.4);
@@ -402,6 +423,17 @@ export default function App() {
         }
 
         /* ── Responsive ── */
+        @media (max-width: 640px) {
+          .feature-grid {
+            grid-template-columns: 1fr;
+          }
+          .feature-card,
+          .feature-card:nth-child(4),
+          .feature-card:nth-child(5) {
+            grid-column: 1 / -1;
+          }
+        }
+
         @media (max-width: 480px) {
           .logo-lockup {
             flex-direction: column;
