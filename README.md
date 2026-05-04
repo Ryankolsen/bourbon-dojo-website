@@ -5,8 +5,8 @@ Landing page for [Bourbon Dojo](https://apps.apple.com/us/app/bourbon-dojo/id676
 ## Local development
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Opens at http://localhost:5173.
@@ -14,8 +14,8 @@ Opens at http://localhost:5173.
 ## Build
 
 ```bash
-npm run build   # outputs to dist/
-npm run preview # serve the production build locally
+pnpm build    # outputs to dist/
+pnpm preview  # serve the production build locally
 ```
 
 ## Deploy
